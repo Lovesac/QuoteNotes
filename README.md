@@ -1,4 +1,4 @@
-# LoveSac-QuoteNotes
-Quickly generate Notes for Quotes by entering variables
+# Lovesac Quick Quote Notes Generator
+Generate Notes for Quotes by entering variables
 
-**Live Demo:** https://healtheon2048.github.io/LoveSac-QuoteNotes/
+**Live Demo:** https://lovesac.github.io/QuoteNotes/
