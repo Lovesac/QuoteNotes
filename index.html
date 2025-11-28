@@ -62,6 +62,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             cursor: pointer;
             transition: background-color 0.3s;
+            margin-bottom: 20px;
         }
         .output-section:hover {
             background-color: #34495e;
@@ -86,6 +87,13 @@
         }
         .required {
             color: #e74c3c;
+        }
+        .disclaimer {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 10px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -139,6 +147,8 @@
         <div class="copy-notice">Click to copy to clipboard</div>
     </section>
 
+    <div class="disclaimer">Not affiliated with Lovesac</div>
+
     <script>
         // Get DOM elements
         const authorInput = document.getElementById('author');
@@ -167,7 +177,7 @@
             today.setHours(0, 0, 0, 0); // Set to beginning of day for accurate day count
             
             const expDate = new Date(expirationDate);
-            expDate.setHours(20, 0, 0, 0); // Set to beginning of day for accurate day count
+            expDate.setHours(0, 0, 0, 0); // Set to beginning of day for accurate day count
             
             const diffTime = expDate - today;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
