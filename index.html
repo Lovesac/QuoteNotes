@@ -120,7 +120,7 @@
         
         <div class="form-group">
             <label for="financing">Financing:</label>
-            <input type="text" id="financing" placeholder="Enter months"> months
+            <input type="text" id="financing" placeholder="Enter months" value="24"> months
         </div>
         
         <div class="form-group">
@@ -190,12 +190,16 @@
             return Math.round(total / months);
         }
 
-        // Format date as MM/DD/YY
+        // Format date as MM/DD/YY (fixed timezone issue)
         function formatDate(dateString) {
             const date = new Date(dateString);
-            const month = date.getMonth() + 1;
-            const day = date.getDate();
-            const year = date.getFullYear().toString().slice(-2);
+            // Add timezone offset to prevent date shifting
+            const timezoneOffset = date.getTimezoneOffset() * 60000;
+            const adjustedDate = new Date(date.getTime() + timezoneOffset);
+            
+            const month = adjustedDate.getMonth() + 1;
+            const day = adjustedDate.getDate();
+            const year = adjustedDate.getFullYear().toString().slice(-2);
             return `${month}/${day}/${year}`;
         }
 
@@ -219,7 +223,7 @@
             const monthlyPayment = financing > 0 ? calculateMonthlyPayment(quoteTotal, financing) : 0;
             const daysUntilExpiration = getDaysUntilExpiration(expirationDate);
             const todayFormatted = getFormattedToday();
-            const formattedExpDate = formatDate(expirationDate + 1);
+            const formattedExpDate = formatDate(expirationDate);
             
             // Build output text
             let output = '';
