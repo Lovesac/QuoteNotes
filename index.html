@@ -219,7 +219,7 @@
             const monthlyPayment = financing > 0 ? calculateMonthlyPayment(quoteTotal, financing) : 0;
             const daysUntilExpiration = getDaysUntilExpiration(expirationDate);
             const todayFormatted = getFormattedToday();
-            const formattedExpDate = formatDate(expirationDate + 1);
+            const formattedExpDate = formatDate(expirationDate);
             
             // Build output text
             let output = '';
