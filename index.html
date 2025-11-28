@@ -167,7 +167,7 @@
             today.setHours(0, 0, 0, 0); // Set to beginning of day for accurate day count
             
             const expDate = new Date(expirationDate);
-            expDate.setHours(0, 0, 0, 0); // Set to beginning of day for accurate day count
+            expDate.setHours(20, 0, 0, 0); // Set to beginning of day for accurate day count
             
             const diffTime = expDate - today;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
