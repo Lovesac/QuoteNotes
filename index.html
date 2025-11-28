@@ -184,9 +184,9 @@
         }
 
         // Calculate monthly payment
-        function calculateMonthlyPayment(total, months, discount) {
-            const discountedTotal = total * (1 - discount / 100);
-            return Math.round(discountedTotal / months);
+        function calculateMonthlyPayment(total, months) {
+            const calcTotal = (total / months);
+            return Math.round(calcTotal);
         }
 
         // Update output text
@@ -206,7 +206,7 @@
             
             // Format expiration date
             const expDate = new Date(expirationDate);
-            const formattedExpDate = `${expDate.getMonth() + 1}/${expDate.getDate()}/${expDate.getFullYear()}`;
+            const formattedExpDate = `${expDate.getMonth()}/${expDate.getDate()}/${expDate.getFullYear()}`;
             
             // Build output text
             let output = '';
