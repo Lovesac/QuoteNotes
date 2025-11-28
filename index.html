@@ -264,15 +264,15 @@
             output += ' ]   ';
             
             // Expiration section
-            output += `(!!) EXPIRES in ${daysUntilExpiration} days on ${formattedExpDate} (!!)   `;
+            output += ` (!!) EXPIRES in ${daysUntilExpiration} days on ${formattedExpDate} (!!)   `;
             
             // Heroes message if checked
             if (isHero) {
-                output += '**Visit LOVESAC.COM/HEROES to apply!   ';
+                output += ' **Visit LOVESAC.COM/HEROES to apply!   ';
             }
             
             // Author section
-            output += `—Author: ${author} on ${todayFormatted}**—`;
+            output += ` —Author: ${author} on ${todayFormatted}— `;
             
             outputText.textContent = output;
         }
