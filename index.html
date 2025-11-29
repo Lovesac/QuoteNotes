@@ -67,6 +67,8 @@
         }
         .form-group {
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
         }
         label {
             display: block;
@@ -144,15 +146,17 @@
             flex-wrap: wrap;
             gap: 1px;
             align-items: center;
+            justify-content: center;
         }
         .inline-form-group .form-group {
             margin-right: 5px;
-            flex: 1;
-            min-width: 80px;
+            flex: 0;
+            min-width: 100px;
+            justify-content: center;
         }
         .inline-form-group .checkbox-group {
             margin-top: 25px;
-            max-width: 40px;
+            max-width: 50px;
         }
         
         /* Dark mode toggle button */
