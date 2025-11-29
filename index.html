@@ -100,7 +100,7 @@
 <body>
     <header>
         <h1>Quick Quote Notes</h1>
-        <p class="subtitle">Fill in the information to generate copy text.</p>
+        <p class="subtitle">Complete the form to generate copy text.</p>
     </header>
 
     <section class="form-section">
@@ -271,7 +271,9 @@
                 output += ' **Visit LOVESAC.COM/HEROES to apply!   ';
             }
             
-            output += '-by ${author} on ${todayFormatted}-';
+            // Author & Date
+            output += `-by ${author} on ${todayFormatted}-`;
+            
             outputText.textContent = output;
         }
 
