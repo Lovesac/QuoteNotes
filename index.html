@@ -147,7 +147,7 @@
         <div class="copy-notice">Click to copy to clipboard</div>
     </section>
 
-    <div class="disclaimer">Not affiliated with Lovesac</div>
+    <div class="disclaimer">Not affiliated with Lovesac. For demonstration purposes only.</div>
 
     <script>
         // Get DOM elements
@@ -244,7 +244,7 @@
             }
             
             // Price section
-            output += `[ ${formatCurrency(quoteTotal)}`;
+            output += `{{ ${formatCurrency(quoteTotal)}`;
             
             // Add monthly payment if financing is specified
             if (financing > 0) {
@@ -261,7 +261,7 @@
                 output += ' with Heroes Code**';
             }
             
-            output += ' ]   ';
+            output += ' }}   ';
             
             // Expiration section
             output += ` (!!) EXPIRES in ${daysUntilExpiration} days on ${formattedExpDate} (!!)   `;
@@ -271,9 +271,7 @@
                 output += ' **Visit LOVESAC.COM/HEROES to apply!   ';
             }
             
-            // Author section
-            output += ` | Author: ${author} on ${todayFormatted} | `;
-            
+            output += '-by ${author} on ${todayFormatted}-';
             outputText.textContent = output;
         }
 
