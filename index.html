@@ -74,8 +74,17 @@
             margin-bottom: 3px;
             font-weight: 600;
         }
-        input[type="text"], input[type="date"] {
-            width: 80%;
+        input[type="text"] {
+            width: 100%;
+            padding: 7px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: var(--form-bg);
+            color: var(--text-color);
+        }
+        input[type="date"] {
+            width: 95%;
             padding: 7px;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -133,9 +142,9 @@
         /* Inline form group styling */
         .inline-form-group {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: flex-end;
+            flex-wrap: nowrap;
+            gap: 10px;
+            align-items: center;
         }
         .inline-form-group .form-group {
             margin-bottom: 0;
@@ -144,6 +153,8 @@
         }
         .inline-form-group .checkbox-group {
             margin-top: 22px;
+            margin-left: 10px;
+            align-items: center;
         }
         
         /* Dark mode toggle button */
@@ -199,7 +210,7 @@
         <div class="inline-form-group">
             <div class="form-group">
                 <label for="discount">Discount:</label>
-                <input type="text" id="discount" placeholder="Enter percentage">%
+                <input type="text" id="discount" placeholder="Enter %">%
             </div>
             
             <div class="form-group">
