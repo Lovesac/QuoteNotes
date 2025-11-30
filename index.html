@@ -95,7 +95,7 @@
         input[type="checkbox"] {
             margin-right: 10px;
             margin-left: 20px
-            transform: scale(1.2);
+            transform: scale(1.6);
         }
         .output-section {
             background-color: var(--output-bg);
@@ -125,7 +125,7 @@
             color: var(--copy-notice-color);
         }
         .checkbox-group {
-            display: flex;
+            display: grid;
             align-items: center;
         }
         .required {
@@ -142,7 +142,7 @@
         
         /* Inline form group styling */
         .inline-form-group {
-            display: inline-flex;
+            display: block;
             flex-wrap: nowrap;
             gap: 10px;
             align-items: stretch;
@@ -152,11 +152,15 @@
             margin-bottom: 5px;
             flex: 1;
             min-width: 100px;
+            justify-content: space-between;
         }
         .inline-form-group .checkbox-group {
             margin-top: 20px;
             margin-left: 0px;
+            display: grid;
             align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
         
         /* Dark mode toggle button */
