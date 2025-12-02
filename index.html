@@ -364,15 +364,7 @@
             output += ' }   ';
             
             // Expiration section
-            if (daysUntilExpiration > 1) {
-                output += ` ....EXPIRES in ${daysUntilExpiration} days on ${formattedExpDate}....   `;
-            }
-            if (daysUntilExpiration = 1) {
-                output += ` ....EXPIRES at End-of-Day TOMORROW on ${formattedExpDate}....   `;
-            }
-            if (daysUntilExpiration = 0) {
-                output += ` ....EXPIRES at End-of-Day TODAY on ${formattedExpDate}....   `;
-            }
+            output += ` ....EXPIRES in ${daysUntilExpiration} day(s) on ${formattedExpDate}....   `;
             
             // Heroes message if checked
             if (isHero) {
