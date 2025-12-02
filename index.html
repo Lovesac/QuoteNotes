@@ -93,7 +93,7 @@
             font-size: 16px;
             background-color: var(--form-bg);
             color: var(--text-color);
-            justify-content: center;
+            justify-content: space-evenly;
         }
         input[type="checkbox"] {
             margin-right: 10px;
@@ -363,7 +363,15 @@
             output += ' }   ';
             
             // Expiration section
-            output += ` ....EXPIRES in ${daysUntilExpiration} days on ${formattedExpDate}....   `;
+            if (daysUntilExpiration > 1) {
+                output += ` ....EXPIRES in ${daysUntilExpiration} days on ${formattedExpDate}....   `;
+            }
+            if (daysUntilExpiration = 1) {
+                output += ` ....EXPIRES at End-of-Day TOMORROW on ${formattedExpDate}....   `;
+            }
+            if (daysUntilExpiration = 0) {
+                output += ` ....EXPIRES at End-of-Day TODAY on ${formattedExpDate}....   `;
+            }
             
             // Heroes message if checked
             if (isHero) {
