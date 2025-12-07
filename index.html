@@ -306,11 +306,11 @@
             // Add timezone offset to prevent date shifting
             const timezoneOffset = date.getTimezoneOffset() * 60000;
             const adjustedDate = new Date(date.getTime() + timezoneOffset);
-            
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const dayName = days[adjustedDate.getDay()];
             const month = adjustedDate.getMonth() + 1;
             const day = adjustedDate.getDate();
-            const year = adjustedDate.getFullYear().toString().slice(-2);
-            return `${month}/${day}/${year}`;
+            return `${dayName}. ${month}/${day}`;
         }
 
         // Update output text
