@@ -314,54 +314,76 @@
         }
 
         // Update output text
-        function updateOutput() {
-            const author = authorInput.value || '';
-            const quoteTotal = parseFloat(quoteTotalInput.value) || 0;
-            const discount = parseFloat(discountInput.value) || 0;
-            const isHero = heroCheckbox.checked;
-            const financing = parseInt(financingInput.value) || 0;
-            const expirationDate = expirationInput.value;
-            const customNote = customNoteInput.value;
-            
-            // Check if required fields are filled
-            if (!author || !quoteTotal || !expirationDate) {
-                outputText.textContent = 'Please fill in the required fields to generate the quote text.';
-                return;
-            }
-            
-            // Calculate values
-            const monthlyPayment = financing > 0 ? calculateMonthlyPayment(quoteTotal, financing) : 0;
-            const daysUntilExpiration = getDaysUntilExpiration(expirationDate);
-            const todayFormatted = getFormattedToday();
-            const formattedExpDate = formatDate(expirationDate);
-            
-            // Build output text
-            let output = '';
-            
-            // Custom note if provided
-            if (customNote) {
-                output += `(${customNote}) `;
-            }
-            
-            // Price section
-            output += `{ ${formatCurrency(quoteTotal)}`;
-            
-            // Add monthly payment if financing is specified
-            if (financing > 0) {
-                output += ` or $${monthlyPayment} per mo. for ${financing} mos.`;
-            }
-            
-            // Add discount if specified
-            if (discount > 0) {
-                output += ` after ${discount}% off`;
-            }
-            
-            // Add Heroes Code if checked
-            if (isHero) {
-                output += ' with Heroes Code**';
-            }
-            
-            output += ' }   ';
+function updateOutput() {
+    const author = authorInput.value || '';
+    const quoteTotal = parseFloat(quoteTotalInput.value) || 0;
+    const discount = parseFloat(discountInput.value) || 0;
+    const isHero = heroCheckbox.checked;
+    const financing = parseInt(financingInput.value) || 0;
+    const expirationDate = expirationInput.value;
+    const customNote = customNoteInput.value;
+    
+    // Check if required fields are filled
+    if (!author || !quoteTotal || !expirationDate) {
+        outputText.textContent = 'Please fill in the required fields to generate the quote text.';
+        return;
+    }
+    
+    // Calculate values
+    const monthlyPayment = financing > 0 ? calculateMonthlyPayment(quoteTotal, financing) : 0;
+    const daysUntilExpiration = getDaysUntilExpiration(expirationDate);
+    const todayFormatted = getFormattedToday();
+    const formattedExpDate = formatDate(expirationDate);
+    
+    // Build output text
+    let output = '';
+    
+    // Custom note if provided
+    if (customNote) {
+        output += `(${customNote}) `;
+    }
+    
+    // Price section
+    output += `{ ${formatCurrency(quoteTotal)}`;
+    
+    // Add monthly payment if financing is specified
+    if (financing > 0) {
+        output += ` or $${monthlyPayment} per mo. for ${financing} mos.`;
+    }
+    
+    // Add discount if specified
+    if (discount > 0) {
+        output += ` after ${discount}% off`;
+    }
+    
+    // Add Heroes Code if checked
+    if (isHero) {
+        output += ' with Heroes Code**';
+    }
+    
+    output += ' }   ';
+    
+    // Expiration section - UPDATED based on days until expiration
+    let expirationMessage = '';
+    if (daysUntilExpiration === 0) {
+        expirationMessage = `EXPIRES TODAY on ${formattedExpDate}....`;
+    } else if (daysUntilExpiration === 1) {
+        expirationMessage = `EXPIRES TOMORROW on ${formattedExpDate}....`;
+    } else {
+        expirationMessage = `....EXPIRES in ${daysUntilExpiration} day(s) on ${formattedExpDate}....`;
+    }
+    output += expirationMessage + '   ';
+    
+    // Heroes message if checked
+    if (isHero) {
+        output += ' **Visit LOVESAC.COM/HEROES to apply!   ';
+    }
+    
+    // Author & Date
+    output += `--by ${author} on ${todayFormatted}--`;
+    
+    outputText.textContent = output;
+}
             
             // Expiration section
             output += ` ....EXPIRES in ${daysUntilExpiration} day(s) on ${formattedExpDate}....   `;
