@@ -69,6 +69,7 @@
         .form-group {
             margin-bottom: 10px;
             justify-content: center;
+            font-size: 15px;
         }
         label {
             display: block;
@@ -245,7 +246,7 @@
         <div class="copy-notice">Click to copy to clipboard</div>
     </section>
     
-    <div class="disclaimer">- ver. 2.0.5 -</div>
+    <div class="disclaimer">- ver. 1.1.0 -</div>
     <div class="disclaimer">Not affiliated with Lovesac. For demonstration purposes only.</div>
 
     <script>
@@ -297,10 +298,10 @@
 
         // Calculate monthly payment (without applying discount)
         function calculateMonthlyPayment(total, months) {
-            return Math.round(total / months);
+            return Math.round((total / months) + 1);
         }
 
-        // Format date as MM/DD/YY (fixed timezone issue)
+        // Format date as MM/DD/YY
         function formatDate(dateString) {
             const date = new Date(dateString);
             // Add timezone offset to prevent date shifting
@@ -366,9 +367,9 @@
     // Expiration section - UPDATED based on days until expiration
     let expirationMessage = '';
     if (daysUntilExpiration === 0) {
-        expirationMessage = `EXPIRES TODAY, ${formattedExpDate}....`;
+        expirationMessage = `....EXPIRES TODAY, ${formattedExpDate}....`;
     } else if (daysUntilExpiration === 1) {
-        expirationMessage = `EXPIRES TOMORROW, ${formattedExpDate}....`;
+        expirationMessage = `....EXPIRES TOMORROW, ${formattedExpDate}....`;
     } else {
         expirationMessage = `....EXPIRES in ${daysUntilExpiration} days on ${formattedExpDate}....`;
     }
