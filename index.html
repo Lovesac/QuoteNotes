@@ -246,7 +246,7 @@
         <div class="copy-notice">Click to copy to clipboard</div>
     </section>
     
-    <div class="disclaimer">- ver. 1.1.0 -</div>
+    <div class="disclaimer">- ver. 1.1.1 -</div>
     <div class="disclaimer">Not affiliated with Lovesac. For demonstration purposes only.</div>
 
     <script>
@@ -298,7 +298,7 @@
 
         // Calculate monthly payment (without applying discount)
         function calculateMonthlyPayment(total, months) {
-            return Math.round((total / months) + 1);
+            return Math.ceil(total / months);
         }
 
         // Format date as MM/DD/YY
@@ -381,7 +381,7 @@
             }
             
             // Author & Date
-            output += `--by ${author} on ${todayFormatted}--`;
+            output += `–by ${author} on ${todayFormatted}–`;
             
             outputText.textContent = output;
         }
