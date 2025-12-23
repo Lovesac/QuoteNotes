@@ -214,14 +214,14 @@
 
         <div class="form-group">
             <label for="expiration">Expiration Date: <span class="required">*</span></label>
-            <input type="date" id="expiration">
+            <input type="date" id="expiration" value="<?php echo date('Y-m-d'); ?>">
         </div>
         
         <!-- Inline form group for discount, hero, and financing -->
         <div class="inline-form-group">
             <div class="form-group">
-                <label for="discount">Discount:</label>
-                <input type="text" id="discount" placeholder="Enter %">%
+                <label for="discount">Discount (%):</label>
+                <input type="text" id="discount" placeholder="Enter %">
             </div>
             
             <div class="form-group">
@@ -232,8 +232,8 @@
             </div>
             
             <div class="form-group">
-                <label for="financing">Financing:</label>
-                <input type="text" id="financing" placeholder="Enter months" value="24"> months
+                <label for="financing">Financing (months):</label>
+                <input type="text" id="financing" placeholder="Enter months" value="24">
             </div>
         </div>
         
@@ -248,7 +248,7 @@
         <div class="copy-notice">Click to copy to clipboard</div>
     </section>
 
-    <div class="disclaimer">- ver. 1.1.4 -</div>
+    <div class="disclaimer">- ver. 1.2.0 -</div>
     <div class="disclaimer">Not affiliated with Lovesac. For demonstration purposes only.</div>
 
     <script>
@@ -343,11 +343,11 @@
             
             // Custom note if provided
             if (customNote) {
-                output += `(${customNote}) `;
+                output += `(${customNote})  `;
             }
             
             // Price section
-            output += `{ ${formatCurrency(quoteTotal)}`;
+            output += `{{ ${formatCurrency(quoteTotal)}`;
 
             // Add Heroes Code if checked
             if (isHero) {
@@ -364,7 +364,7 @@
                 output += ` after ${discount}% off`;
             }
             
-            output += ' }   ';
+            output += ' }}   ';
             
     // Expiration section - UPDATED based on days until expiration
     let expirationMessage = '';
