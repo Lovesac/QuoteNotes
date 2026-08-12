@@ -7,33 +7,39 @@
     <meta http-equiv="refresh" content="21600">
     <style>
         :root {
-            --bg-color: #D6D6D6;
-            --text-color: #333;
-            --form-bg: #F5F5F5;
-            --header-color: #00808C;
-            --subtitle-color: #7f8c8d;
-            --output-bg: #00808C;
-            --output-hover: #34495e;
-            --output-active: #1a252f;
-            --copy-notice-color: #bdc3c7;
-            --required-color: #e74c3c;
-            --disclaimer-color: #7f8c8d;
-        }
-
-        .dark-mode {
-            --bg-color: #1a1a1a;
-            --text-color: #f0f0f0;
-            --form-bg: #2d2d2d;
-            --header-color: #00C0D1;
+            --bg-color: #202020;
+            --text-color: #e1e0e0;
+            --form-bg: #393838;
+            --header-color: #02a3b1;
             --subtitle-color: #95a5a6;
-            --output-bg: #00C0D1;
-            --output-hover: #2980b9;
+            --output-hover: #2570a2;
             --output-active: #1c5a7d;
             --copy-notice-color: #d1d7db;
             --required-color: #e74c3c;
-            --disclaimer-color: #95a5a6;
+            --border-color: #9c9c9c;
+            --input-bg: #4b4b4b;
+            --box-shadow: rgba(0, 0, 0, 0.9);
         }
 
+        .dark-mode {
+            --bg-color: #c4c3c3;
+            --text-color: #333;
+            --form-bg: #e0e0e0;
+            --header-color: #00808C;
+            --subtitle-color: #525b5c;
+            --output-hover: #354a5f;
+            --output-active: #1a252f;
+            --copy-notice-color: #9baaab;
+            --required-color: #e74c3c;
+            --border-color: #b8b8b8;
+            --input-bg: #f5f5f5;
+            --box-shadow: rgba(0, 0, 0, 0.3);
+        }
+        @font-face {
+            font-family: 'Lucida Sans';
+            src: local('Lucida Sans')
+                 url('https://fonts.cdnfonts.com/css/lucida-sans') format('woff');
+        }
         * {
             box-sizing: border-box;
             font-family: 'Lucida Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -67,7 +73,7 @@
             padding-bottom: 9px;
             padding-top: 14px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 9px var(--box-shadow);
             margin-bottom: 25px;
             margin-top: -10px;
         }
@@ -90,11 +96,11 @@
         input[type="text"] {
             width: 100%;
             padding: 7px;
-            border: 2px solid #ddd;
+            border: 2px solid var(--border-color);
             border-radius: 20px;
             font-size: 16px;
             text-align: center;
-            background-color: var(--form-bg);
+            background-color: var(--input-bg);
             color: var(--text-color);
         }
         input[type="date"] {
@@ -103,11 +109,11 @@
             margin-bottom: 9px;
             margin-top: 0px;
             padding: 5px;
-            border: 2px solid #ddd;
+            border: 2px solid var(--border-color);
             border-radius: 20px;
             font-size: 16px;
             text-align: center;
-            background-color: var(--form-bg);
+            background-color: var(--input-bg);
             color: var(--text-color);
             justify-content: space-evenly;
         }
@@ -118,22 +124,22 @@
         select {
             width: 100%;
             padding: 7px;
-            border: 2px solid #ddd;
+            border: 2px solid var(--border-color);
             border-radius: 20px;
             font-size: 16px;
             text-align: center;
-            background-color: var(--form-bg);
+            background-color: var(--input-bg);
             color: var(--text-color);
         }
         .output-section {
-            background-color: var(--output-bg);
-            color: white;
+            background-color: var(--header-color);
+            color: rgb(255, 255, 255);
             padding: 24px;
-            padding-top: 16px;
-            padding-bottom: 12px;
+            padding-top: 18px;
+            padding-bottom: 14px;
             margin-bottom: 20px;
-            border-radius: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            box-shadow: 0 3px 12px var(--box-shadow);
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -145,7 +151,8 @@
         }
         .output-text {
             white-space: pre-line;
-            line-height: 1.4;
+            text-align: center;
+            line-height: 1.5;
             font-size: 18px;
         }
         .copy-notice {
@@ -166,7 +173,7 @@
         }
         .disclaimer {
             text-align: center;
-            color: var(--disclaimer-color);
+            color: var(--subtitle-color);
             font-size: 14px;
             margin-top: 10px;
             margin-bottom: 10px;
@@ -195,14 +202,18 @@
             flex-wrap: wrap;
             gap: 8px;
         }
+        ::placeholder {
+            color: var(--border-color);
+            opacity: 1;
+        }
         
         /* Dark mode toggle button */
         #darkModeToggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
+            top: 16px;
+            right: 16px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background-color: var(--header-color);
             color: white;
@@ -281,6 +292,7 @@
                     <option value="12">12 months</option>
                     <option value="18">18 months</option>
                     <option value="24">24 months</option>
+                    <option value="30">30 months</option>
                     <option value="36">36 months</option>
                 </select>
             </div>
@@ -297,8 +309,8 @@
         <div class="copy-notice">Click to copy to clipboard</div>
     </section>
 
-    <div class="disclaimer">- ver. 1.2.6 -</div>
-    <div class="disclaimer">Not affiliated with Lovesac. For demonstration purposes only.</div>
+    <div class="disclaimer">- ver. 1.2.7 -</div>
+    <div class="disclaimer">For demonstration purposes only.<br>Not affiliated with The Lovesac Company.</div>
 
     <script>
         // Get DOM elements
@@ -411,12 +423,12 @@
                 output += ` after ${discount}% off`;
             }
             if (discount == 1) {
-                output += ` after discounts`;
+                output += ` with current promo`;
             }
 
             // Add Heroes Code if checked
             if (isHero) {
-                output += ' with Heroes Code**';
+                output += ' plus Heroes Code**';
             }
             
             output += ' }}   ';
