@@ -19,6 +19,9 @@
             --border-color: #9c9c9c;
             --input-bg: #4b4b4b;
             --box-shadow: rgba(0, 0, 0, 0.9);
+            --table-header-bg: #555555;
+            --table-row-alt: #4a4a4a;
+            --modal-bg: #2d2d2d;
         }
 
         .dark-mode {
@@ -34,6 +37,9 @@
             --border-color: #b8b8b8;
             --input-bg: #f5f5f5;
             --box-shadow: rgba(0, 0, 0, 0.3);
+            --table-header-bg: #a0a0a0;
+            --table-row-alt: #d0d0d0;
+            --modal-bg: #f0f0f0;
         }
         @font-face {
             font-family: 'Lucida Sans';
@@ -206,34 +212,304 @@
             color: var(--border-color);
             opacity: 1;
         }
-        
-        /* Dark mode toggle button */
-        #darkModeToggle {
+
+        /* --- Menu Button Styles --- */
+        #menuToggle {
             position: fixed;
             top: 16px;
             right: 16px;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
             background-color: var(--header-color);
             color: white;
             border: none;
             cursor: pointer;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            gap: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 1000;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
-        #darkModeToggle:hover {
+        #menuToggle:hover {
             transform: scale(1.05);
+        }
+        #menuToggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* --- Pop-up Menu --- */
+        .menu-popup {
+            position: fixed;
+            top: 65px;
+            right: 16px;
+            width: 220px;
+            background-color: var(--form-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--box-shadow);
+            padding: 10px;
+            z-index: 1001;
+            display: none; /* Hidden by default */
+            border: 1px solid var(--border-color);
+        }
+        .menu-popup.show {
+            display: block;
+            animation: fadeIn 0.2s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .menu-section {
+            margin-bottom: 10px;
+        }
+        .menu-section:last-child {
+            margin-bottom: 0;
+        }
+        .menu-section-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--subtitle-color);
+            font-weight: 700;
+            margin-bottom: 6px;
+            padding-left: 8px;
+            letter-spacing: 0.5px;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--text-color);
+            transition: background-color 0.2s;
+        }
+        .menu-item:hover {
+            background-color: var(--input-bg);
+        }
+        .menu-item .icon {
+            font-size: 16px;
+        }
+
+        /* --- LEAP Tier Pricing Modal --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        .modal-overlay.show {
+            display: flex;
+        }
+        .modal-content {
+            background-color: var(--modal-bg);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--header-color);
+            padding-bottom: 10px;
+        }
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+            color: var(--header-color);
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+            padding: 0 5px;
+            line-height: 1;
+        }
+        .modal-close:hover {
+            color: var(--required-color);
+        }
+        
+        /* --- LEAP Table Styles --- */
+        .leap-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .leap-table th {
+            background-color: var(--table-header-bg);
+            color: var(--text-color);
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .leap-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        .leap-table tr:nth-child(even) {
+            background-color: var(--table-row-alt);
+        }
+        .leap-table tr:last-child td {
+            border-bottom: none;
+        }
+        .leap-table .highlight {
+            color: var(--header-color);
+            font-weight: 700;
+        }
+        .leap-table .sku-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+        }
+        
+        /* Ensure table fits on small screens */
+        @media (max-width: 480px) {
+            .leap-table th, .leap-table td {
+                padding: 8px 4px;
+                font-size: 12px;
+            }
+            .modal-content {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <button id="darkModeToggle">☀︎</button>
+    <!-- Hamburger Menu Button -->
+    <button id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Pop-up Menu -->
+    <div class="menu-popup" id="menuPopup">
+        <div class="menu-section">
+            <div class="menu-section-title">Settings</div>
+            <div class="menu-item" id="darkModeToggle">
+                <span>Dark / Light Mode</span>
+                <span class="icon" id="themeIcon">☀︎</span>
+            </div>
+        </div>
+        <div class="menu-section">
+            <div class="menu-section-title">Resources</div>
+            <div class="menu-item" id="leapPricingBtn">
+                <span>LEAP Tier Pricing</span>
+                <span class="icon">📋</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- LEAP Tier Pricing Modal -->
+    <div class="modal-overlay" id="leapModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>LEAP Plan Tier Pricing</h2>
+                <button class="modal-close" id="closeLeapModal">&times;</button>
+            </div>
+            <table class="leap-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Merchandise MSRP</th>
+                        <th>TIER</th>
+                        <th>SKU</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>$1</td>
+                        <td>–</td>
+                        <td>$1,500</td>
+                        <td class="highlight">$99</td>
+                        <td class="sku-text">LEAP99</td>
+                    </tr>
+                    <tr>
+                        <td>$1,501</td>
+                        <td>–</td>
+                        <td>$3,500</td>
+                        <td class="highlight">$249</td>
+                        <td class="sku-text">LEAP249</td>
+                    </tr>
+                    <tr>
+                        <td>$3,501</td>
+                        <td>–</td>
+                        <td>$5,500</td>
+                        <td class="highlight">$299</td>
+                        <td class="sku-text">LEAP299</td>
+                    </tr>
+                    <tr>
+                        <td>$5,501</td>
+                        <td>–</td>
+                        <td>$7,500</td>
+                        <td class="highlight">$399</td>
+                        <td class="sku-text">LEAP399</td>
+                    </tr>
+                    <tr>
+                        <td>$7,501</td>
+                        <td>–</td>
+                        <td>$10,500</td>
+                        <td class="highlight">$499</td>
+                        <td class="sku-text">LEAP499</td>
+                    </tr>
+                    <tr>
+                        <td>$10,501</td>
+                        <td>–</td>
+                        <td>$29,999</td>
+                        <td class="highlight">$599</td>
+                        <td class="sku-text">LEAP599</td>
+                    </tr>
+                    <tr>
+                        <td>$30,000</td>
+                        <td>–</td>
+                        <td>$39,999</td>
+                        <td class="highlight">$699</td>
+                        <td class="sku-text">LEAP699</td>
+                    </tr>
+                    <tr>
+                        <td>$40,000</td>
+                        <td>–</td>
+                        <td>$49,999</td>
+                        <td class="highlight">$799</td>
+                        <td class="sku-text">LEAP799</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
     
     <header>
         <h1>Quick Quote Notes</h1>
@@ -309,7 +585,7 @@
         <div class="copy-notice">Click to copy to clipboard</div>
     </section>
 
-    <div class="disclaimer">- ver. 1.2.7 -</div>
+    <div class="disclaimer">- ver. 1.2.8 -</div>
     <div class="disclaimer">For demonstration purposes only.<br>Not affiliated with The Lovesac Company.</div>
 
     <script>
@@ -323,7 +599,15 @@
         const customNoteInput = document.getElementById('customNote');
         const outputText = document.getElementById('outputText');
         const outputSection = document.getElementById('outputSection');
+        
+        // Menu Elements
+        const menuToggle = document.getElementById('menuToggle');
+        const menuPopup = document.getElementById('menuPopup');
         const darkModeToggle = document.getElementById('darkModeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const leapPricingBtn = document.getElementById('leapPricingBtn');
+        const leapModal = document.getElementById('leapModal');
+        const closeLeapModal = document.getElementById('closeLeapModal');
 
         // Format number as currency
         function formatCurrency(amount) {
@@ -460,12 +744,12 @@
             const textToCopy = outputText.textContent;
             
             // Don't copy if it's the placeholder text
-            if (textToCopy.includes('Please fill in')) {
+            if (textToCopy.includes('Please clicking fill in')) {
                 return;
             }
             
-            // Create a temporary textarea element to copy from
-            const textarea = document.createElement('textarea');
+            // outside Create a temporary textarea element to copy from
+            const content textarea = document.createElement('textarea');
             textarea.value = textToCopy;
             document.body.appendChild(textarea);
             textarea.select();
@@ -499,14 +783,46 @@
             updateOutput();
         });
 
-        // Dark mode toggle functionality
+        // --- Menu Functionality ---
+        
+        // Toggle menu popup
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menuPopup.classList.toggle('show');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!menuPopup.contains(e.target) && e.target !== menuToggle) {
+                menuPopup.classList.remove('show');
+            }
+        });
+
+        // Dark mode toggle functionality (now inside menu)
         darkModeToggle.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
             
             if (document.body.classList.contains('dark-mode')) {
-                darkModeToggle.textContent = '⏾';
+                themeIcon.textContent = '⏾';
             } else {
-                darkModeToggle.textContent = '☀︎';
+                themeIcon.textContent = '☀︎';
+            }
+        });
+
+        // LEAP Pricing Modal functionality
+        leapPricingBtn.addEventListener('click', function() {
+            leapModal.classList.add('show');
+            menuPopup.classList.remove('show'); // Close menu when opening modal
+        });
+
+        closeLeapModal.addEventListener('click', function() {
+            leapModal.classList.remove('show');
+        });
+
+        // Close modal when
+        leapModal.addEventListener('click', function(e) {
+            if (e.target === leapModal) {
+                leapModal.classList.remove('show');
             }
         });
 
@@ -520,12 +836,12 @@
         }
 
         // If expiration date is set to before today, reset it to today
-function enforceMinExpirationDate() {
-    if (!expirationInput.value) return;
-    if (getDaysUntilExpiration(expirationInput.value) < 0) {
-        setDefaultExpirationDate();
-    }
-}
+        function enforceMinExpirationDate() {
+            if (!expirationInput.value) return;
+            if (getDaysUntilExpiration(expirationInput.value) < 0) {
+                setDefaultExpirationDate();
+            }
+        }
 
         setDefaultExpirationDate();
 
